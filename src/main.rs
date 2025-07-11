@@ -136,7 +136,7 @@ fn main() -> std::io::Result<()> {
         for tag_field in fields.iter().skip(11) {
             let parts: Vec<&str> = tag_field.splitn(3, ':').collect();
             if parts.len() != 3 {
-                eprintln!("⚠️ Skipping malformed tag '{}'", tag_field);
+                eprintln!("Skipping malformed tag '{}'", tag_field);
                 continue;
             }
         
@@ -156,7 +156,7 @@ fn main() -> std::io::Result<()> {
                         record.extend_from_slice(b"i");
                         record.extend_from_slice(&val.to_le_bytes());
                     } else {
-                        eprintln!("⚠️ Could not parse integer tag '{}'", tag_field);
+                        eprintln!("Could not parse integer tag '{}'", tag_field);
                     }
                 }
                 "Z" => {
@@ -166,10 +166,10 @@ fn main() -> std::io::Result<()> {
                     record.push(0);
                 }
                 "f" | "B" => {
-                    eprintln!("⚠️ Skipping unsupported tag type '{}' on record {}: {}", type_char, qname, tag_field);
+                    eprintln!("Skipping unsupported tag type '{}' on record {}: {}", type_char, qname, tag_field);
                 }
                 _ => {
-                    eprintln!("⚠️ Unknown tag type '{}' in record {}: {}", type_char, qname, tag_field);
+                    eprintln!("Unknown tag type '{}' in record {}: {}", type_char, qname, tag_field);
                 }
             }
         }        
@@ -184,7 +184,7 @@ fn main() -> std::io::Result<()> {
     writer.write_all(&BAM_EOF)?;
     writer.flush()?;
 
-    println!("✅ BAM written to {}", args[2]);
+    println!("BAM written to {}", args[2]);
     Ok(())
 }
 
