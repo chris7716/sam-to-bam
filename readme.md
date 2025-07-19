@@ -25,7 +25,7 @@ This is a **minimal and memory-efficient** tool that converts a SAM file into a 
 ### 1. Clone or Download
 
 ```bash
-git clone https://github.com/your-repo/sam-to-bam-rust.git
+git clone https://github.com/chris7716/sam-to-bam-rust.git
 cd sam-to-bam-rust
 ```
 
